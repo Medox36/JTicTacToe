@@ -82,7 +82,6 @@ public class GUI implements ActionListener {
                         buttons[i].setText("X");
                         turnOfP1 = false;
                         textFeld.setText("O am Zug");
-                        check();
                         clicks++;
                     }
                 } else {
@@ -91,7 +90,6 @@ public class GUI implements ActionListener {
                         buttons[i].setText("O");
                         turnOfP1 = true;
                         textFeld.setText("X am Zug");
-                        check();
                         clicks++;
                     }
                 }
@@ -100,6 +98,7 @@ public class GUI implements ActionListener {
         if (clicks > 8) {
             textFeld.setText("Unentschieden");
         }
+        check();
         if (e.getSource() == button) {
             reset();
             firstTurn();
