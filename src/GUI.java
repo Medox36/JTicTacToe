@@ -5,15 +5,15 @@ import java.util.Random;
 
 public class GUI implements ActionListener {
 
-    private final Random zufall;
+    private final Random random;
     private final JLabel textFeld;
     private final JButton[] buttons;
     private final JButton button;
-    private boolean spieler1Zug;
+    private boolean turnOfP1;
     private int clicks = 0;
 
     public GUI() {
-        zufall = new Random();
+        random = new Random();
         textFeld = new JLabel();
         buttons = new JButton[9];
         button = new JButton();
@@ -68,18 +68,18 @@ public class GUI implements ActionListener {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ersterZug();
+        firstTurn();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < 9; i++) {
             if (e.getSource() == buttons[i]) {
-                if (spieler1Zug) {
+                if (turnOfP1) {
                     if (buttons[i].getText().equals("")) {
                         buttons[i].setForeground(new Color(231, 76, 60));
                         buttons[i].setText("X");
-                        spieler1Zug = false;
+                        turnOfP1 = false;
                         textFeld.setText("O am Zug");
                         check();
                         clicks++;
@@ -88,7 +88,7 @@ public class GUI implements ActionListener {
                     if (buttons[i].getText().equals("")) {
                         buttons[i].setForeground(new Color(33, 97, 140));
                         buttons[i].setText("O");
-                        spieler1Zug = true;
+                        turnOfP1 = true;
                         textFeld.setText("X am Zug");
                         check();
                         clicks++;
@@ -96,9 +96,12 @@ public class GUI implements ActionListener {
                 }
             }
         }
+        if (clicks > 8) {
+            textFeld.setText("Unentschieden");
+        }
         if (e.getSource() == button) {
             reset();
-            ersterZug();
+            firstTurn();
         }
         try {
             Thread.sleep(10);
@@ -107,68 +110,68 @@ public class GUI implements ActionListener {
         }
     }
 
-    public void ersterZug() {
-        if (zufall.nextInt(2) == 0) {
-            spieler1Zug = true;
+    public void firstTurn() {
+        if (random.nextInt(2) == 0) {
+            turnOfP1 = true;
             textFeld.setText("X am Zug");
         } else {
-            spieler1Zug = false;
+            turnOfP1 = false;
             textFeld.setText("O am Zug");
         }
     }
 
     public void check() {
         if ((buttons[0].getText().equals("X")) && (buttons[1].getText().equals("X")) && (buttons[2].getText().equals("X"))) {
-            xGewinnt(0, 1, 2);
+            xWinns(0, 1, 2);
         }
         if ((buttons[3].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[5].getText().equals("X"))) {
-            xGewinnt(3, 4, 5);
+            xWinns(3, 4, 5);
         }
         if ((buttons[6].getText().equals("X")) && (buttons[7].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xGewinnt(6, 7, 8);
+            xWinns(6, 7, 8);
         }
         if ((buttons[0].getText().equals("X")) && (buttons[3].getText().equals("X")) && (buttons[6].getText().equals("X"))) {
-            xGewinnt(0, 3, 6);
+            xWinns(0, 3, 6);
         }
         if ((buttons[1].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[7].getText().equals("X"))) {
-            xGewinnt(1, 4, 7);
+            xWinns(1, 4, 7);
         }
         if ((buttons[2].getText().equals("X")) && (buttons[5].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xGewinnt(2, 5, 8);
+            xWinns(2, 5, 8);
         }
         if ((buttons[0].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xGewinnt(0, 4, 8);
+            xWinns(0, 4, 8);
         }
         if ((buttons[2].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[6].getText().equals("X"))) {
-            xGewinnt(2, 4, 6);
+            xWinns(2, 4, 6);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[1].getText().equals("O")) && (buttons[2].getText().equals("O"))) {
-            oGewinnt(0, 1, 2);
+            oWinns(0, 1, 2);
         }
         if ((buttons[3].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[5].getText().equals("O"))) {
-            oGewinnt(3, 4, 5);
+            oWinns(3, 4, 5);
         }
         if ((buttons[6].getText().equals("O")) && (buttons[7].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oGewinnt(6, 7, 8);
+            oWinns(6, 7, 8);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[3].getText().equals("O")) && (buttons[6].getText().equals("O"))) {
-            oGewinnt(0, 3, 6);
+            oWinns(0, 3, 6);
         }
         if ((buttons[1].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[7].getText().equals("O"))) {
-            oGewinnt(1, 4, 7);
+            oWinns(1, 4, 7);
         }
         if ((buttons[2].getText().equals("O")) && (buttons[5].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oGewinnt(2, 5, 8);
+            oWinns(2, 5, 8);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oGewinnt(0, 4, 8);
+            oWinns(0, 4, 8);
         }
         if ((buttons[2].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[6].getText().equals("O"))) {
-            oGewinnt(2, 4, 6);
+            oWinns(2, 4, 6);
         }
     }
 
-    public void xGewinnt(int a, int b, int c) {
+    public void xWinns(int a, int b, int c) {
         buttons[a].setBackground(Color.green);
         buttons[b].setBackground(Color.green);
         buttons[c].setBackground(Color.green);
@@ -178,7 +181,7 @@ public class GUI implements ActionListener {
         textFeld.setText("X gewinnt!");
     }
 
-    public void oGewinnt(int a, int b, int c) {
+    public void oWinns(int a, int b, int c) {
         buttons[a].setBackground(Color.green);
         buttons[b].setBackground(Color.green);
         buttons[c].setBackground(Color.green);
