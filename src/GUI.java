@@ -24,6 +24,7 @@ public class GUI implements ActionListener {
         frame.getContentPane().setBackground(new Color(50, 50, 50));
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setTitle("Tic Tac Toe - Game");
 
         textFeld.setBackground(new Color(50, 50, 50));
@@ -197,5 +198,6 @@ public class GUI implements ActionListener {
             buttons[i].setBackground(new Color(248, 249, 249));
             buttons[i].setEnabled(true);
         }
+        clicks = 0;
     }
 }
