@@ -122,56 +122,56 @@ public class GUI implements ActionListener {
 
     public void check() {
         if ((buttons[0].getText().equals("X")) && (buttons[1].getText().equals("X")) && (buttons[2].getText().equals("X"))) {
-            xWinns(0, 1, 2);
+            xWins(0, 1, 2);
         }
         if ((buttons[3].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[5].getText().equals("X"))) {
-            xWinns(3, 4, 5);
+            xWins(3, 4, 5);
         }
         if ((buttons[6].getText().equals("X")) && (buttons[7].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xWinns(6, 7, 8);
+            xWins(6, 7, 8);
         }
         if ((buttons[0].getText().equals("X")) && (buttons[3].getText().equals("X")) && (buttons[6].getText().equals("X"))) {
-            xWinns(0, 3, 6);
+            xWins(0, 3, 6);
         }
         if ((buttons[1].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[7].getText().equals("X"))) {
-            xWinns(1, 4, 7);
+            xWins(1, 4, 7);
         }
         if ((buttons[2].getText().equals("X")) && (buttons[5].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xWinns(2, 5, 8);
+            xWins(2, 5, 8);
         }
         if ((buttons[0].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[8].getText().equals("X"))) {
-            xWinns(0, 4, 8);
+            xWins(0, 4, 8);
         }
         if ((buttons[2].getText().equals("X")) && (buttons[4].getText().equals("X")) && (buttons[6].getText().equals("X"))) {
-            xWinns(2, 4, 6);
+            xWins(2, 4, 6);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[1].getText().equals("O")) && (buttons[2].getText().equals("O"))) {
-            oWinns(0, 1, 2);
+            oWins(0, 1, 2);
         }
         if ((buttons[3].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[5].getText().equals("O"))) {
-            oWinns(3, 4, 5);
+            oWins(3, 4, 5);
         }
         if ((buttons[6].getText().equals("O")) && (buttons[7].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oWinns(6, 7, 8);
+            oWins(6, 7, 8);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[3].getText().equals("O")) && (buttons[6].getText().equals("O"))) {
-            oWinns(0, 3, 6);
+            oWins(0, 3, 6);
         }
         if ((buttons[1].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[7].getText().equals("O"))) {
-            oWinns(1, 4, 7);
+            oWins(1, 4, 7);
         }
         if ((buttons[2].getText().equals("O")) && (buttons[5].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oWinns(2, 5, 8);
+            oWins(2, 5, 8);
         }
         if ((buttons[0].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[8].getText().equals("O"))) {
-            oWinns(0, 4, 8);
+            oWins(0, 4, 8);
         }
         if ((buttons[2].getText().equals("O")) && (buttons[4].getText().equals("O")) && (buttons[6].getText().equals("O"))) {
-            oWinns(2, 4, 6);
+            oWins(2, 4, 6);
         }
     }
 
-    public void xWinns(int a, int b, int c) {
+    public void xWins(int a, int b, int c) {
         buttons[a].setBackground(Color.green);
         buttons[b].setBackground(Color.green);
         buttons[c].setBackground(Color.green);
@@ -181,7 +181,7 @@ public class GUI implements ActionListener {
         textFeld.setText("X gewinnt!");
     }
 
-    public void oWinns(int a, int b, int c) {
+    public void oWins(int a, int b, int c) {
         buttons[a].setBackground(Color.green);
         buttons[b].setBackground(Color.green);
         buttons[c].setBackground(Color.green);
